@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_file, make_response
+from flask import Flask, render_template, send_file, make_response, send_from_directory
 from flask import request as req
 from bs4 import BeautifulSoup
 from openpyxl import Workbook
@@ -12,6 +12,10 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/js/<path:filename>')
+def serve_js(filename):
+    return send_from_directory('js', filename)
 
 @app.route('/download_planilha', methods=['POST'])
 def download_planilha():

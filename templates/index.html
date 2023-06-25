@@ -2,20 +2,55 @@
 <html>
 <head>
     <title>Download do conteúdo do Envio</title>
+    <link rel="icon" type="image/x-icon" href="https://lunnar.com.br/ismafer/favicon.ico">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Download Conteúdo do Envio</h1>
-        <form action="/download_planilha" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label class="form-label" for="file">Selecione o arquivo HTML:</label>
-                <input class="form-input" type="file" id="file" name="html_file" accept=".html">
-            </div>
-            <div class="form-group">
-                <button class="form-submit" type="submit">Baixar Planilha</button>
-            </div>
-        </form>
+    <header>
+        <nav class="menu">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="#">Home</a></li>
+                <li class="menu-item"><a href="#">Conteúdo</a></li>
+                <li class="menu-item"><a href="#">Excedente</a></li>
+                <li class="menu-item"><a href="#">Anúncios</a></li>
+                <li class="menu-item"><a href="#">Boost</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="flex-container">
+        <div class="container1">
+            <h1>Gerador da página de conteúdo HTML <br>do Mercado Livre para Excel</h1>
+            <h3>Gere seus arquivos EXCEL do ML através do HTML da página com rapidez.
+                <br>Simplifique seu trabalho de planilhar os Envios e conclua mais envios
+                <br>em menos tempo.</h3>
+                <ul class="checklist">
+                    <li class="checklist-inline">Coloque o seu arquivo HTML ao lado começar — é fácil!</li>
+                    <li class="checklist-inline">Comece agora mesmo — sem treinamentos ou integrações...</li>
+                    <li class="checklist-inline">Sem conta, sem login, mais facilidade pra você!</li>
+                </ul>
+        </div>
+
+        <div class="container2">
+            <form action="/download_planilha" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="file-input-wrapper">
+                        <input class="form-input" type="file" id="file" name="html_file" accept=".html">
+                            <label for="file" class="file-input-label">ESCOLHER ARQUIVO EM HTML</label>
+                            <span class="file-name form-input form-label"></span>
+                            <span class="delete-button" id="deleteButton"></span>
+                            <div class="loading-overlay">
+                                <div class="loader"></div>
+                              </div>                                                       
+                    </div>
+                </div>
+                <div class="form-group form-group-button">
+                    <button class="form-submit" type="submit" id="submitButton">Baixar Planilha</button>
+                </div>
+            </form>
+        </div>
     </div>
+    <script src="{{ url_for('serve_js', filename='script.js') }}"></script>
 </body>
 </html>
